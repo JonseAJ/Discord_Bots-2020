@@ -1,3 +1,0 @@
-Discord
-Token
-Keep_alive
