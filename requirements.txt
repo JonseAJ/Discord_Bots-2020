@@ -5,7 +5,7 @@ import asyncio
 from discord import Embed
 #import datetime
 #import youtube_dl  
-import keep_alive
+#import keep_alive
 
 #command prefix
 bot = commands.Bot(command_prefix = '!')
@@ -179,5 +179,5 @@ async def rules(ctx):
   await ctx.send(embed = embed) 
 
 token ='NzMyMTEwMjcwNjM3Mjc3MTg0.XxLScQ.J46fnZtH9uJoLgT9OlL__jCKcaA'
-keep_alive.keep_alive()
+#keep_alive.keep_alive()
 bot.run(token)
