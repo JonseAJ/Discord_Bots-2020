@@ -1,3 +1,4 @@
+#This is the code Jonse found on youtube to make his bots be online even after the tab that is containing and running the code are closed.
 from flask import Flask
 from threading import Thread
 
