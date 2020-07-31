@@ -1,4 +1,4 @@
-This bot creaated by Jonse is similar to tthe first bot
+This bot creaated by Jonse is similar to the first bot
 import discord
 from discord.ext import commands
 #import random 
