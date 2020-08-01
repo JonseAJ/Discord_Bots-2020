@@ -71,6 +71,6 @@ async def pushup_reminder():
     await asyncio.sleep(3600)
 bot.loop.create_task(pushup_reminder())
 
-token = "NzMxMDk2NDU0NTI0OTYwODQ5.XwhEoQ.x6cDj3499z_ERdudCQUDaoSh_xs"
+token = "My bot_Token"
 keep_alive.keep_alive()
 bot.run(token)
