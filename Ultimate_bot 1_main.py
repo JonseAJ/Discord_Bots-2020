@@ -1,3 +1,4 @@
+#Jonse first Discord bot.py
 import discord
 from discord.ext import commands
 import random
@@ -46,7 +47,7 @@ async def ban(ctx, member: discord.Member, reason=None):
 	await ctx.send(embed=embed)
 
 
-#unban command
+#unban command not working
 @bot.command()
 async def unban(ctx, member, *, reason=None):
 	member = await bot.fetch_user(int(member))
@@ -123,8 +124,6 @@ async def dm_all(ctx, *, args=None):
 
 
 #Server mannagements commands
-
-
 #clear command
 @bot.command(pass_text=True)
 async def clear(ctx, amount=1):
@@ -138,21 +137,10 @@ async def clear(ctx, amount=1):
 	await ctx.channel.purge(limit=amount + 1)
 	await ctx.send(embed=embed)
 
-#forbidden nuke command
-@bot.command()
-#async def nuke(ctx):
-#    channels = ctx.guild.channels
-#    for channel in channels:
-#        try:
-#            await channel.delete()
-#            print(channel.name + " has been deleted.")
-#        except Exception as error:
-#            print(channel.name + " failed to delete.") 
-#            print(error)
+#nuke command
+#vvv
 
 #Game commands
-
-
 #coinflip command
 @bot.command()
 async def coinflip(ctx):
@@ -161,7 +149,7 @@ async def coinflip(ctx):
 #list of  possible outcomes in coinflip command
 @bot.command()
 async def lscoinflip(ctx):
-	embed = discord.Embed(title="list of  possible outcomes in '!coinflip' command",description='Heads  Tails', colour=discord.Colour.green())
+	embed = discord.Embed(title='Heads  Tails', colour=discord.Colour.green())
 	await ctx.send(embed=embed)
 
 #dice_roll command
@@ -169,11 +157,11 @@ async def lscoinflip(ctx):
 async def dice(ctx):
 	possible_outcomes = ['1,2,3,4,5,6']
 	await ctx.send(random.choice(possible_outcomes))
-#list of  possible outcomes in dice command
+#list of  possible outcomes in rps command
 @bot.command()
 async def lsdice(ctx):
 	embed = discord.Embed(
-	    title="list of  possible outcomes in '!dice' command" ,description='1  2  3  4  5  6',colour=discord.Colour.green())
+	    title='1  2  3  4  5 6', colour=discord.Colour.green())
 	await ctx.send(embed=embed)
 
 #rock,paper scissors command
@@ -184,10 +172,10 @@ async def rps(ctx):
 #list of  possible outcomes in rps command
 @bot.command()
 async def lsrps(ctx):
-	embed = discord.Embed(title='Rock  Paper  Scissors',description= 'Rock  Paper  Scissors', colour=discord.Colour.green())
+	embed = discord.Embed(
+	    title='Rock  Paper  Scissors', colour=discord.Colour.green())
 
 	await ctx.send(embed=embed)
-  
 
 
 #Fun commands
@@ -271,23 +259,60 @@ async def lsreply(ctx):
 bot.remove_command("help")
 @bot.command()
 async def help(ctx):
-	embed = discord.Embed(title='help command',description='Shows this message',colour=discord.Colour.green())
+	embed = discord.Embed(
+	    title='help command',
+	    description='Shows this message',
+	    colour=discord.Colour.green())
 	embed.add_field(name='!kick[user]', value='Kicks a member', inline=False)
 	embed.add_field(name='!ban[user]', value='Bans a member', inline=False)
-	embed.add_field(name='!join[VC]', value='bot joins the voice channel', inline=False)
-	embed.add_field(name='!slap[user]',value=' A member will be slapped by another member',inline=False)
-	embed.add_field(name='!warn[user]',value=' A mem ber will be warnned by another member',inline=False)
-	embed.add_field(name='!clear[amount]',value='Clears a certain number of messages',inline=False)
-	embed.add_field(name='!coinflip[random]',value='Flips a coin to get either head or tails',inline=False)
-	embed.add_field(name='!dice[random]',value='Rolls a dice to get a number from 1-6 ',inline=False)
-	embed.add_field(name='!rps[random]', value='Rock, paper, scissors game', inline=False)
-	embed.add_field(name='!say[message]',value="Repeats what the author said after !say",inline=False)
-	embed.add_field(name='!ping[author]', value='Pings the author', inline=False)
+	embed.add_field(
+	    name='!join[VC]', value='bot joins the voice channel', inline=False)
+	embed.add_field(
+	    name='!slap[user]',
+	    value=' A member will be slapped by another member',
+	    inline=False)
+	embed.add_field(
+	    name='!warn[user]',
+	    value=' A mem ber will be warnned by another member',
+	    inline=False)
+	embed.add_field(
+	    name='!clear[amount]',
+	    value='Clears a certain number of messages',
+	    inline=False)
+	embed.add_field(
+	    name='!coinflip[random]',
+	    value='Flips a coin to get either head or tails',
+	    inline=False)
+	embed.add_field(
+	    name='!dice[random]',
+	    value='Rolls a dice to get a number from 1-6 ',
+	    inline=False)
+	embed.add_field(
+	    name='!rps[random]', value='Rock, paper, scissors game', inline=False)
+	embed.add_field(
+	    name='!say[message]',
+	    value="Repeats what the author said after !say",
+	    inline=False)
+	embed.add_field(
+	    name='!ping[author]', value='Pings the author', inline=False)
 	embed.add_field(name='!joke[random]', value='Tells a joke', inline=False)
-	embed.add_field(name='!reply[question][random]',value='Randomly replies to a question',inline=False)
-	embed.add_field(name='!rules[Information]',value='Tells the rules of the server',inline=False)
-	embed.add_field(name='!info[Information]',value='Gives information about the bot and its developer',inline=False)
-	embed.add_field(name='!nuke[Destruction]',value='Deletes all the channels and categories! Therefore this command will be only available to trusted members only!',inline=False)
+	embed.add_field(
+	    name='!reply[question][random]',
+	    value='Randomly replies to a question',
+	    inline=False)
+	embed.add_field(
+	    name='!rules[Information]',
+	    value='Tells the rules of the server',
+	    inline=False)
+	embed.add_field(
+	    name='!info[Information]',
+	    value='Gives information about the bot and its developer',
+	    inline=False)
+	embed.add_field(
+	    name='!nuke[Destruction]',
+	    value=
+	    'Deletes all the channels and categories! Therefore this command will be only available to trusted members only!',
+	    inline=False)
 
 	await ctx.send(embed=embed)
 
@@ -353,14 +378,6 @@ async def info(ctx):
 
 	await ctx.send(embed=embed)
 
-token = 'NzMyMTEwMjcwNjM3Mjc3MTg0.XxhAeQ.06gfyALl7MstoLejWhXHIg_uUPU'
+token ='My bot token'
 keep_alive.keep_alive()
 bot.run(token)
-
-#to be fixed and added to the !help command
-
-#embed.add_field(name = '!unban[user]',  value = 'Unbans a member' , inline = False )
-#embed.add_field(name = '!leave[VC]',  value = 'bot leaves the voice channel' , inline = False )
-#embed.add_field(name = '!mute[user]',  value = 'mutes a member' ,   inline = False )
-#embed.add_field(name = '!unmute[user]',  value = 'unmutes a member' , inline = False )
-
