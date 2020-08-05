@@ -2,7 +2,7 @@ import discord
 #from discord.ext import commands 
 import asyncio 
 import random
-import datetime
+#import datetime
 import keep_alive
 
 bot = discord.Client()
@@ -42,14 +42,14 @@ async def on_message(message):
     Trigger_words = ["Workout", "Pushup"]
     channel = message.channel
     for Trigger_word in Trigger_words:
-        if Trigger_word.lower() in message.content.lower():
+        if Trigger_words in message.content.lower():
             response = f"Did you say {Trigger_word.lower()}? Drop and give me 10, {message.author.name}!"
             await channel.send(response)
             
     Trigger_words = ["Hello", "hey", "sup", "hi"]
     channel = message.channel
     for Trigger_word in Trigger_words:
-        if Trigger_word.lower() in message.content.lower():
+        if Trigger_words in message.content.lower():
             response = f"Hi {message.author.name}!"
             await channel.send(response)
 
@@ -64,13 +64,15 @@ async def pushup_reminder():
         online_members.append(member.id)
     if len(online_members) > 0:
       user = random.choice(online_members)
-      channel = bot.get_channel(736930120228536381)
-      current_time = int(datetime.datetime.now().strftime("%I")) 
-      message = f"It's {current_time} o'clock!, time for some pushups <@{user}>!"
+      channel = bot.get_channel(740477098505928785)
+      #current_time = int(datetime.datetime.now().strftime("%I")) 
+      #message = f"It's {current_time} o'clock!, time for some pushups <@{user}>!"
+      message = f"It's time for some pushups <@{user}>!"
       await channel.send(message)
     await asyncio.sleep(3600)
 bot.loop.create_task(pushup_reminder())
 
-token = "My bot_Token"
+token = "MY_Bot_token"
 keep_alive.keep_alive()
 bot.run(token)
+
