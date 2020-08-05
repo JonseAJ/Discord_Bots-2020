@@ -137,8 +137,22 @@ async def clear(ctx, amount=1):
 	await ctx.channel.purge(limit=amount + 1)
 	await ctx.send(embed=embed)
 
-#nuke command
-#vvv
+
+#forbidden nuke command
+@bot.command()
+async def nuke(ctx):
+    channels = ctx.guild.channels
+
+    for channel in channels:
+        try:
+            #await channel.delete()
+            print(channel.name + " has been deleted.")
+        
+        except Exception as error:
+            print(channel.name + " failed to delete.") 
+            print(error)
+
+
 
 #Game commands
 #coinflip command
@@ -375,9 +389,19 @@ async def info(ctx):
 	embed.add_field(name='Developer', value="Jonse Gamer", inline=False)
 	embed.add_field(
 	    name="Developer's assistant", value="Coldfrost", inline=False)
+	embed.add_field(name= "invite", value= 'https://tinyurl.com/y53ketx9')
 
 	await ctx.send(embed=embed)
 
-token ='My bot token'
+token = 'NzMyMTEwMjcwNjM3Mjc3MTg0.Xwv00g.7e_-SpapLgjX_Sb_i_648gUM9II'
 keep_alive.keep_alive()
 bot.run(token)
+
+#to be fixed and added to the !help command
+
+#embed.add_field(name = '!unban[user]',  value = 'Unbans a member' , inline = False )
+#embed.add_field(name = '!leave[VC]',  value = 'bot leaves the voice channel' , inline = False )
+#embed.add_field(name = '!mute[user]',  value = 'mutes a member' ,   inline = False )
+#embed.add_field(name = '!unmute[user]',  value = 'unmutes a member' , inline = False )
+
+
