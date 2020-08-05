@@ -1,4 +1,4 @@
-This bot created by Jonse is similar to the first bot
+This bot created by Jonse and is the prototype of the first bot
 import discord
 from discord.ext import commands
 #import random 
@@ -16,7 +16,7 @@ bot = commands.Bot(command_prefix = '$')
 #when Bot is ready
 @bot.event
 async def on_ready():
-    print("Bot is ready")
+    print("Command Bot is ready")
     print(bot.user)
 
 
@@ -98,7 +98,7 @@ async def nuke(ctx):
 
     for channel in channels:
         try:
-            await channel.delete()
+            #await channel.delete()
             print(channel.name + " has been deleted.")
         
         except Exception as error:
@@ -121,13 +121,31 @@ async def help(ctx):
   embed.add_field(name = '$coinflip[Random]',  value = 'Flips a coin to get either head or tails' , inline = False )
   embed.add_field(name = '$clear[Amount]',  value = 'Clears a certain number of messages' , inline = False )
   embed.add_field(
-	    name='!nuke[Destruction]',
+	    name='$nuke[Destruction]',
 	    value=
 	    'Deletes all the channels and categories! Enjoy bombing!',inline=False)
-  
+  embed.add_field(
+	    name='$info[Information]',
+	    value='Gives information about the bot and its developer')
   await ctx.send(embed = embed) 
 
-token="My_bot_token"
+#infomation command
+@bot.command()
+async def info(ctx):
+	embed = discord.Embed(
+	    title='Ultimate bot',
+	    description='A bot build with  python',
+	    colour=discord.Colour.green())
+	embed.add_field(
+	    name="bot's Command Prefix", value='!<command>', inline=False)
+	embed.add_field(name='Developer', value="Jonse Gamer", inline=False)
+	embed.add_field(
+	    name="Developer's assistant", value="Coldfrost", inline=False)
+	embed.add_field(name= "invite", value= 'https://tinyurl.com/y3urj59j')
+
+	await ctx.send(embed=embed)  
+
+	token=("MY_token")
 
 keep_alive.keep_alive()
 bot.run(token)
