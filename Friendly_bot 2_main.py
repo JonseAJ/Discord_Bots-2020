@@ -78,4 +78,8 @@ bot.loop.create_task(pushup_reminder())
 token = "MY_Bot_token"
 keep_alive.keep_alive()
 bot.run(token)
+Notice the bot may send out reminders but will say its {current time} which will be wrong!
+So this will be fixed in the future!
+
+Also going to add the reaction role functions!
 
