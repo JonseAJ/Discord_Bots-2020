@@ -1,3 +1,5 @@
+Jonse second Discord.py bot with the applied IT idea from EAEcon hackathon 2020
+
 import discord
 #from discord.ext import commands 
 import asyncio 
