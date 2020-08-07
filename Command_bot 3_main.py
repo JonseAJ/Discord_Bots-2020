@@ -1,4 +1,7 @@
-This bot created by Jonse and is the prototype of the first bot
+This bot created by Jonse and is the prototype of the first bot(Ultimate bot )
+This bot will not be upgraded or further improved
+
+
 import discord
 from discord.ext import commands
 #import random 
