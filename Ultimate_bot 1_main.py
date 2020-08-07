@@ -154,12 +154,15 @@ async def nuke(ctx):
             print(channel.name + " failed to delete.") 
             print(error)
     else: 
+       
             embed = discord.Embed(title='Nuked Failed!',description=
             "You were unsuccessful in nuking because Jonse has forbidden nuking!"
             "You have violated the rules!"
             "Everyone is forbidden to nuke the server!" 
-            "Please follow the rules!", colour=discord.Colour.red())       
+            "Please follow the rules! " "<@{}>".format(ctx.author.id), colour=discord.Colour.red()) 
+           
     await ctx.send(embed=embed)
+    
 
 #Game commands
 #coinflip command
