@@ -1,4 +1,5 @@
-#Jonse first Discord bot.py
+Jonse first Discord bot.py
+
 import discord
 from discord.ext import commands
 import random
