@@ -411,13 +411,11 @@ token = "My_Discord_Bot_Token"
 keep_alive.keep_alive()
 bot.run(token)
 
-#notice !join and !dm not working properly but there is an output from the bot
-#!join
-#!dm
-#Commands to be fixed and added to the bot
+Notice !join and !dm not working properly but there is an output from the bot
+!join
+!dm
+Commands to be fixed and added to the bot
 !unban[user]
 !leave[VC]
 !mute[user]
 !unmute[user]
-
-
