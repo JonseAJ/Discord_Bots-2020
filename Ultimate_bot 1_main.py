@@ -99,6 +99,7 @@ async def dm(ctx, user_id=None, *, args=None):
             await target.send(args)
 
             await ctx.channel.send("'" + args + "' sent to: " + target.name)
+            #await ctx.message.delete()
 
         except:
             await ctx.channel.send("Couldn't dm the given user.")
@@ -115,6 +116,7 @@ async def dm_all(ctx, *, args=None):
             try:
                 await member.send(args)
                 print("'" + args + "' sent to: " + member.name)
+                await ctx.message.delete()
 
             except:
                 print("Couldn't send '" + args + "' to: " + member.name)
@@ -335,6 +337,10 @@ async def help(ctx):
 	    value=
 	    'Deletes all the channels and categories! Therefore this command will be only available to trusted members only!',
 	    inline=False)
+	embed.add_field(
+	    name='!ls[commands with >1 possible outcomes]',
+	    value="Shows the list of possible outcomes for the command. Works only on !joke,!reply,!rps,!coinflip,!dice commands",
+	    inline=False)      
 
 	await ctx.send(embed=embed)
 
@@ -405,6 +411,9 @@ token = "My_Discord_Bot_Token"
 keep_alive.keep_alive()
 bot.run(token)
 
+#notice !join and !dm not working properly but there is an output from the bot
+#!join
+#!dm
 #Commands to be fixed and added to the bot
 !unban[user]
 !leave[VC]
