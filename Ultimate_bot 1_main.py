@@ -287,7 +287,15 @@ async def help(ctx):
 	    inline=False)
 	embed.add_field(
 	    name='!warn[user]',
-	    value=' A mem ber will be warnned by another member',
+	    value=' A member will be warnned by another member',
+	    inline=False)
+	embed.add_field(
+	    name='!dm[user]',
+	    value="Dms a member with the author's message",
+	    inline=False)
+	embed.add_field(
+	    name='!dm_all[Everyone]',
+	    value="Dms all the members of the server with the author's message",
 	    inline=False)
 	embed.add_field(
 	    name='!clear[amount]',
@@ -393,15 +401,14 @@ async def info(ctx):
 
 	await ctx.send(embed=embed)
 
-token = 'my_bot_token'
+token = "My_Discord_Bot_Token"
 keep_alive.keep_alive()
 bot.run(token)
 
-#to be fixed and added to the !help command
-
-#embed.add_field(name = '!unban[user]',  value = 'Unbans a member' , inline = False )
-#embed.add_field(name = '!leave[VC]',  value = 'bot leaves the voice channel' , inline = False )
-#embed.add_field(name = '!mute[user]',  value = 'mutes a member' ,   inline = False )
-#embed.add_field(name = '!unmute[user]',  value = 'unmutes a member' , inline = False )
+#Commands to be fixed and added to the bot
+!unban[user]
+!leave[VC]
+!mute[user]
+!unmute[user]
 
 
