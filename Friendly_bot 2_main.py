@@ -70,10 +70,12 @@ async def pushup_reminder():
       channel = bot.get_channel(740477098505928785)
       current_time = int(datetime.datetime.now().strftime("%I")) 
       message = f"It's {current_time} o'clock!, time for some pushups <@{user}>!"
-      message = f"It's {current_time} time for some pushups <@{user}>!"
+      #message = f"It's time for some pushups <@{user}>!"
       await channel.send(message)
     await asyncio.sleep(3600)
 bot.loop.create_task(pushup_reminder())
+
+
 
 token = "MY_Bot_token"
 keep_alive.keep_alive()
