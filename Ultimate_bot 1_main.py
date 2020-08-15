@@ -69,13 +69,14 @@ async def join(ctx):
 
 
 #slap command
+#slap command
 @bot.command()
 async def slap(ctx, member: discord.Member, reason=None):
 	#if Member == None:
 	#await ctx.channel.send("You forgot to add the  "<@{}>".format user you want to slap after '!slap'" "<@{}>".format(ctx.author.id))
 	#else:
 	embed = discord.Embed(
-	    title=f'{member.name} has been slapped!',
+	    title=f':scream_cat: {member.name} has been slapped!',
 	    description=f'{reason}',
 	    colour=discord.Colour.green())
 	await ctx.send(embed=embed)
@@ -285,7 +286,7 @@ bot.remove_command("help")
 @bot.command()
 async def help(ctx):
 	embed = discord.Embed(
-	    title='help command',
+	    title='!help command',
 	    description='Shows this message',
 	    colour=discord.Colour.green())
 	embed.add_field(name='!kick[user]', value='Kicks a member', inline=False)
