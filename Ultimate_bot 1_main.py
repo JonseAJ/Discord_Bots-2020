@@ -1,5 +1,5 @@
 Jonse first Discord bot.py
-
+#Jonse first Discord bot.py
 import discord
 from discord.ext import commands
 import random
@@ -68,7 +68,6 @@ async def join(ctx):
 		await channel.connect()
 
 
-#slap command
 #slap command
 @bot.command()
 async def slap(ctx, member: discord.Member, reason=None):
@@ -149,23 +148,26 @@ async def nuke(ctx):
 
     for channel in channels:
         try:
+ 
             #await channel.delete()
-            print(channel.name + " has been deleted.")
+            print(channel.name + " has been deleted.")           
         
         except Exception as error:
             print(channel.name + " failed to delete.") 
             print(error)
     else: 
+            
+            await ctx.channel.send('NUKE COMMAND TRIGGERED!')
+            await ctx.channel.send("NUKING NOW!"" <@{}>".format(ctx.author.id))
        
             embed = discord.Embed(title='Nuked Failed!',description=
-            "You were unsuccessful in nuking because Jonse has forbidden nuking!"
-            "You have violated the rules!"
-            "Everyone is forbidden to nuke the server!" 
-            "Please follow the rules! " "<@{}>".format(ctx.author.id), colour=discord.Colour.red()) 
-           
-    await ctx.send(embed=embed)
+            "You were unsuccessful in nuking because The owner of the 'Jonse(AJ) Official Server', Jonse has forbidden nuking!"
+            " You have violated the rules!"
+            " Everyone is forbidden to nuke the server!" 
+            " Please follow the rules! " "<@{}>".format(ctx.author.id), colour=discord.Colour.red()) 
+       
+    await ctx.send(embed=embed) 
     
-
 #Game commands
 #coinflip command
 @bot.command()
@@ -417,15 +419,22 @@ async def info(ctx):
 
 	await ctx.send(embed=embed)
 
-token = "My_Discord_Bot_Token"
+token = 'NzMyMTEwMjcwNjM3Mjc3MTg0.Xwv00g.Z1SELxtg5eaf4TSZlWyF_hX9ya4'
 keep_alive.keep_alive()
 bot.run(token)
 
-Notice !join and !dm not working properly but there is an output from the bot
-!join
-!dm
-Commands to be fixed and added to the bot
-!unban[user]
-!leave[VC]
-!mute[user]
-!unmute[user]
+#notice !join and !dm not working properly but there is an output from the bot
+#!join
+#!dm
+#Commands to be fixed and added to the bot
+#!unban[user]
+#!leave[VC]
+#!mute[user]
+#!unmute[user]
+
+#to be fixed and added to the !help command
+
+#embed.add_field(name = '!unban[user]',  value = 'Unbans a member' , inline = False )
+#embed.add_field(name = '!leave[VC]',  value = 'bot leaves the voice channel' , inline = False )
+#embed.add_field(name = '!mute[user]',  value = 'mutes a member' ,   inline = False )
+#embed.add_field(name = '!unmute[user]',  value = 'unmutes a member' , inline = False )
