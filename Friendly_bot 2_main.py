@@ -1,4 +1,6 @@
-Jonse second Discord.py bot with the applied IT idea from EAEcon hackathon 2020
+Jonse second Discord.py bot with the applied IT idea from EAEcon hackathon 2020!
+This bot randomly picks members of my server who are online and reminds them to do pushups every 1 hour!
+This function is similar to the IT idea of mine from the EAEcon hackathon 2020!
 
 import discord
 #from discord.ext import commands 
@@ -77,7 +79,7 @@ bot.loop.create_task(pushup_reminder())
 
 
 
-token = "MY_Bot_token"
+token = "MY_BOT_TOKEN"
 keep_alive.keep_alive()
 bot.run(token)
 Notice the bot may send out reminders but will say its {current time} o'clock! The current time it says will be wrong!
