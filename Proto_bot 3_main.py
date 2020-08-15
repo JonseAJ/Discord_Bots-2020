@@ -1,5 +1,6 @@
-This bot created by Jonse and is the prototype of the first bot(Ultimate bot )
-This bot will not be upgraded or further improved
+This bot created by Jonse and is the prototype of the first bot(Ultimate bot)
+This bot may not be upgraded or further improved, because it is just a prototype of the first bot!
+The 1st bot(Ultimate bot) and the 2nd bot(Friendly bot) will definitely be further improved with more features! 
 
 
 import discord
