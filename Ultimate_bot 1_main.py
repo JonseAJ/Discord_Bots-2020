@@ -419,7 +419,7 @@ async def info(ctx):
 
 	await ctx.send(embed=embed)
 
-token = 'NzMyMTEwMjcwNjM3Mjc3MTg0.Xwv00g.Z1SELxtg5eaf4TSZlWyF_hX9ya4'
+token = 'MY_BOT_TOKEN'
 keep_alive.keep_alive()
 bot.run(token)
 
