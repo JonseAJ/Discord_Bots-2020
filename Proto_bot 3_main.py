@@ -126,7 +126,7 @@ async def nuke(ctx):
 bot.remove_command("help")
 @bot.command()
 async def help(ctx):
-  embed = discord.Embed(title='help command', description='shows this message',colour=discord.Colour.dark_red())
+  embed = discord.Embed(title='$help command', description='shows this message',colour=discord.Colour.dark_red())
   embed.add_field(name = '$kick[user]',  value = 'Kicks a member' ,            inline = False )
   embed.add_field(name = '$ban[user]',  value = 'Bans a member' ,            inline = False )
   embed.add_field(name = '$unban[user]',  value = 'Unbans a member' ,            inline = False )
@@ -150,9 +150,9 @@ async def info(ctx):
 	embed = discord.Embed(
 	    title='Ultimate bot',
 	    description='A bot build with  python',
-	    colour=discord.Colour.green())
+	    colour=discord.Colour.red())
 	embed.add_field(
-	    name="bot's Command Prefix", value='!<command>', inline=False)
+	    name="bot's Command Prefix", value='$<command>', inline=False)
 	embed.add_field(name='Developer', value="Jonse Gamer", inline=False)
 	embed.add_field(
 	    name="Developer's assistant", value="Coldfrost", inline=False)
