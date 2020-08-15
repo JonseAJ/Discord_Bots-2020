@@ -101,12 +101,23 @@ async def nuke(ctx):
 
     for channel in channels:
         try:
+ 
             #await channel.delete()
-            print(channel.name + " has been deleted.")
+            print(channel.name + " has been deleted.")           
         
         except Exception as error:
             print(channel.name + " failed to delete.") 
             print(error)
+    else: 
+            
+            await ctx.channel.send('NUKE COMMAND TRIGGERED!')
+            embed = discord.Embed(title='Nuked Failed!',description=
+            "You were unsuccessful in nuking because The owner of the 'Jonse(AJ) Official Server', Jonse has forbidden nuking!"
+            " You have violated the rules!"
+            " Everyone is forbidden to nuke the server!" 
+            " Please follow the rules! " "<@{}>".format(ctx.author.id), colour=discord.Colour.red()) 
+       
+    await ctx.send(embed=embed) 
 
 
     
