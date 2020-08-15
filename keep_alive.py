@@ -1,4 +1,7 @@
-#This is the code Jonse found on youtube to make his bots be online even after the tab that is containing and running the code are closed.
+This is the code Jonse found on youtube to make his bots be online even after the tabs that are containing and running the codes are closed
+Also Jonse found a way to make his bots now online 24/7!
+This was done after using this keep_alive code's website link in https://uptimerobot.com
+
 from flask import Flask
 from threading import Thread
 
