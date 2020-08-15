@@ -138,7 +138,7 @@ async def help(ctx):
   embed.add_field(
 	    name='$nuke[Destruction]',
 	    value=
-	    'Deletes all the channels and categories! Enjoy bombing!',inline=False)
+	    "Deletes all the channels and categories! However you cannot bomb in Jonse's (developer) Server. But your free to destroy your Server! Enjoy bombing! ",inline=False)
   embed.add_field(
 	    name='$info[Information]',
 	    value='Gives information about the bot and its developer')
