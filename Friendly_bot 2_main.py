@@ -69,7 +69,7 @@ async def pushup_reminder():
         online_members.append(member.id)
     if len(online_members) > 0:
       user = random.choice(online_members)
-      channel = bot.get_channel(740477098505928785)
+      channel = bot.get_channel(744800436908982402)
       current_time = int(datetime.datetime.now().strftime("%I")) 
       message = f"It's {current_time} o'clock!, time for some pushups <@{user}>!"
       #message = f"It's time for some pushups <@{user}>!"
