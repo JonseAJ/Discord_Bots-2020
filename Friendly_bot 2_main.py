@@ -1,5 +1,5 @@
 Jonse second Discord.py bot with the applied IT idea from EAEcon hackathon 2020!
-This bot randomly picks members of my server who are online and reminds them to do pushups and reminds them to do their homework!aevery 1 hour!
+This bot randomly picks members of my server who are online and reminds them to do pushups and reminds them to do their homework! every 1 hour!
 This function is similar to the IT idea of mine from the EAEcon hackathon 2020!
 import discord
 #from discord.ext import commands 
