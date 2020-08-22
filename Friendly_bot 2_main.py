@@ -55,8 +55,17 @@ async def on_message(message):
     for Trigger_word in Trigger_words:
         if Trigger_word.lower() in message.content.lower():
             response = f"Hi {message.author.name}!"
-            await channel.send(response)            
+            await channel.send(response)
+    
+    Trigger_words = ["what is the month", "what is the current month", "what is this month"]
+    channel = message.channel
+    for Trigger_word in Trigger_words:
+        if Trigger_word.lower() in message.content.lower():
+            month = datetime.datetime.now().strftime('%B')
+            response = f"Now the month is {month}, {message.author.name}!"
+            await channel.send(response)
 
+ 
 #pushup_reminder
 @bot.event
 async def pushup_reminder():
@@ -89,8 +98,8 @@ async def homework_reminder():
       user = random.choice(online_members)
       channel = bot.get_channel(746615551576768542)
       current_time = int(datetime.datetime.now().strftime("%I")) 
-      message = f"It's {current_time} o'clock!, do you have any homework<@{user}>? If you have, do it now! Do not procrastinate <@{user}>!"
-      #message = f"Do you have any homework<@{user}>? If you have, do it now! Do not procrastinate <@{user}>!"
+      message = f"It's {current_time} o'clock!, do you have any homework <@{user}>? If you have, do it now! Do not procrastinate <@{user}>!"
+      #message = f"Do you have any homework <@{user}>? If you have, do it now! Do not procrastinate <@{user}>!"
       await channel.send(message)
     await asyncio.sleep(3600)
 bot.loop.create_task(homework_reminder())
@@ -103,4 +112,3 @@ For example it may 4pm now but it will say its 7pm!
 So this will be fixed in the future!
 
 Also going to add the reaction role functions!
-
