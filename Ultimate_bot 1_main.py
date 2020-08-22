@@ -4,6 +4,7 @@ import discord
 from discord.ext import commands
 import random
 import keep_alive
+Import datetime
 
 #command prefix
 bot = commands.Bot(command_prefix='!')
