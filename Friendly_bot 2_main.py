@@ -66,7 +66,7 @@ async def on_message(message):
             response = f"Now the month is {month}, {message.author.name}!"
             await channel.send(response)
 
- 
+#Reminder functions
 #pushup_reminder
 @bot.event
 async def pushup_reminder():
@@ -85,9 +85,7 @@ async def pushup_reminder():
       await channel.send(message)
     await asyncio.sleep(3600)
 bot.loop.create_task(pushup_reminder())
-
 #homework_reminder for students
-@bot.event
 async def homework_reminder():
   while(True):
     await bot.wait_until_ready()
@@ -104,6 +102,7 @@ async def homework_reminder():
       await channel.send(message)
     await asyncio.sleep(3600)
 bot.loop.create_task(homework_reminder())
+
 
 token = "MY_BOT_TOKEN"
 keep_alive.keep_alive()
