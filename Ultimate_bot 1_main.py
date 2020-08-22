@@ -418,6 +418,11 @@ async def info(ctx):
 	embed.add_field(name= "invite", value= 'https://tinyurl.com/y53ketx9')
 
 	await ctx.send(embed=embed)
+#month command to see the what month is it now!
+@bot.command()
+async def month(ctx):
+ month = datetime.datetime.now().strftime('%B')
+ await ctx.channel.send(month)
 
 token = 'MY_BOT_TOKEN'
 keep_alive.keep_alive()
