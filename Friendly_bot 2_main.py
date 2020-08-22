@@ -1,7 +1,6 @@
 Jonse second Discord.py bot with the applied IT idea from EAEcon hackathon 2020!
-This bot randomly picks members of my server who are online and reminds them to do pushups every 1 hour!
+This bot randomly picks members of my server who are online and reminds them to do pushups and reminds them to do their homework!aevery 1 hour!
 This function is similar to the IT idea of mine from the EAEcon hackathon 2020!
-
 import discord
 #from discord.ext import commands 
 import asyncio 
@@ -17,11 +16,11 @@ bot = discord.Client()
 #when bot is ready
 @bot.event
 async def on_ready():
-    print("Friendly bot is online.")
-    print('To do list for Friendly bot')
-    print("Need to make the bot announce '@member has left' when a member leaves the server")
-    print('Need to add the reaction role function like the one @Coldfrost has') 
-
+	await bot.change_presence(status=discord.Status.online,activity=discord.Game("Saying hi and being nice!"))
+print("Friendly bot is online.")
+print('To do list for Friendly bot')
+print("Need to make the bot announce '@member has left' when a member leaves the server")
+print('Need to add the reaction role function like the one @Coldfrost has') 
 
 #Friendly bot functions(bot 2&3 functions)
 #on_member_join
@@ -69,7 +68,7 @@ async def pushup_reminder():
         online_members.append(member.id)
     if len(online_members) > 0:
       user = random.choice(online_members)
-      channel = bot.get_channel(744800436908982402)
+      channel = bot.get_channel(746615461038391307)
       current_time = int(datetime.datetime.now().strftime("%I")) 
       message = f"It's {current_time} o'clock!, time for some pushups <@{user}>!"
       #message = f"It's time for some pushups <@{user}>!"
@@ -77,7 +76,24 @@ async def pushup_reminder():
     await asyncio.sleep(3600)
 bot.loop.create_task(pushup_reminder())
 
-
+#homework_reminder for students
+@bot.event
+async def homework_reminder():
+  while(True):
+    await bot.wait_until_ready()
+    online_members = []
+    for member in bot.get_all_members():
+      if member.status != discord.Status.offline and member.id != bot.user.id:
+        online_members.append(member.id)
+    if len(online_members) > 0:
+      user = random.choice(online_members)
+      channel = bot.get_channel(746615551576768542)
+      current_time = int(datetime.datetime.now().strftime("%I")) 
+      message = f"It's {current_time} o'clock!, do you have any homework<@{user}>? If you have, do it now! Do not procrastinate <@{user}>!"
+      #message = f"Do you have any homework<@{user}>? If you have, do it now! Do not procrastinate <@{user}>!"
+      await channel.send(message)
+    await asyncio.sleep(3600)
+bot.loop.create_task(homework_reminder())
 
 token = "MY_BOT_TOKEN"
 keep_alive.keep_alive()
