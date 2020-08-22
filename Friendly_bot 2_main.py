@@ -107,6 +107,7 @@ bot.loop.create_task(homework_reminder())
 token = "MY_BOT_TOKEN"
 keep_alive.keep_alive()
 bot.run(token)
+
 Notice the bot may send out reminders but will say its {current time} o'clock! The current time it says will be wrong!
 For example it may 4pm now but it will say its 7pm!
 So this will be fixed in the future!
