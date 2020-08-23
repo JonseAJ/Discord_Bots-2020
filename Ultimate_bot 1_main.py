@@ -4,7 +4,7 @@ import discord
 from discord.ext import commands
 import random
 import keep_alive
-Import datetime
+import datetime
 
 #command prefix
 bot = commands.Bot(command_prefix='!')
@@ -425,6 +425,7 @@ async def info(ctx):
 async def month(ctx):
  month = datetime.datetime.now().strftime('%B')
  await ctx.channel.send(month)
+
 
 token = 'MY_BOT_TOKEN'
 keep_alive.keep_alive()
