@@ -18,35 +18,26 @@ async def on_ready():
 	print(
 	    'Need to add !unban[user],!join[VC],!leave[VC],!mute[user],!unmute[user] to Ultimate bot'
 	)
+@bot.event
+async def on_command_error(ctx, error):
+  await ctx.send(f'Error: {error}')
 
 
 #Admin commands
 
-
+#kick command
 @bot.command()
-async def kick(ctx, member: discord.Member, reason=None):
-	#if Member == None:
-	#await ctx.channel.send("You forgot to add the  "<@{}>".format user you want to kick after '!kick'" "<@{}>".format(ctx.author.id))
-	#else:
-	await member.kick(reason=reason)
-	embed = discord.Embed(
-	    title=f"{ctx.author.name} kicked: {member.name}",
-	    description=f"{reason}",
-	    colour=discord.Colour.red())
-	await ctx.send(embed=embed)
+@commands.has_permissions(administrator=True)
+async def kick(ctx, user : discord.Member,*,reason):
+    await user.kick(reason=reason)
+    await ctx.send(f'{user} kicked for {reason}')
 
-#ban command
+#ban command 
 @bot.command()
-async def ban(ctx, member: discord.Member, reason=None):
-	#if Member == None:
-	#await ctx.channel.send("You forgot to add the  "<@{}>".format user you want to ban after '!ban'" "<@{}>".format(ctx.author.id))
-	#else:
-	await member.ban(reason=reason)
-	embed = discord.Embed(
-	    title=f"{ctx.author.name} banned: {member.name}",
-	    description=f"{reason}",
-	    colour=discord.Colour.red())
-	await ctx.send(embed=embed)
+@commands.has_permissions(administrator=True)
+async def ban(ctx, user : discord.Member,*,reason):
+    await user.kick(reason=reason)
+    await ctx.send(f'{user} banned for {reason}')
 
 
 #unban command not working
@@ -425,7 +416,6 @@ async def info(ctx):
 async def month(ctx):
  month = datetime.datetime.now().strftime('%B')
  await ctx.channel.send(month)
-
 
 token = 'MY_BOT_TOKEN'
 keep_alive.keep_alive()
