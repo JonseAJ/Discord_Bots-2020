@@ -18,30 +18,42 @@ async def on_ready():
 	print(
 	    'Need to add !unban[user],!join[VC],!leave[VC],!mute[user],!unmute[user] to Ultimate bot'
 	)
+#error handling 
 @bot.event
 async def on_command_error(ctx, error):
+  #embed = discord.Embed(name= f'Error: {error}', colour=discord.Colour.red())
   await ctx.send(f'Error: {error}')
+  #await ctx.send(embed=embed)
+
 
 
 #Admin commands
 
-#kick command
 @bot.command()
-@commands.has_permissions(administrator=True)
-async def kick(ctx, user : discord.Member,*,reason):
-    await user.kick(reason=reason)
-    await ctx.send(f'{user} kicked for {reason}')
+#@commands.has_permissions(administrator=True)
+async def kick(ctx, member: discord.Member, reason=None):
+	await member.kick(reason=reason)
+	embed = discord.Embed(
+	    title=f"{ctx.author.name} kicked: {member.name}",
+	    description=f"{reason}",
+	    colour=discord.Colour.red())
+	await ctx.send(embed=embed)
 
-#ban command 
+#ban command
 @bot.command()
-@commands.has_permissions(administrator=True)
-async def ban(ctx, user : discord.Member,*,reason):
-    await user.kick(reason=reason)
-    await ctx.send(f'{user} banned for {reason}')
+#@commands.has_permissions(administrator=True)
+async def ban(ctx, member: discord.Member, reason=None):
+	await member.ban(reason=reason)
+	embed = discord.Embed(
+	    title=f"{ctx.author.name} banned: {member.name}",
+	    description=f"{reason}",
+	    colour=discord.Colour.red())
+	await ctx.send(embed=embed)
 
 
 #unban command not working
 @bot.command()
+#@commands.has_permissions(administrator=True)
 async def unban(ctx, member, *, reason=None):
 	member = await bot.fetch_user(int(member))
 	await ctx.guild.unban(member, reason=reason)
@@ -49,7 +61,6 @@ async def unban(ctx, member, *, reason=None):
 	embed = discord.Embed(
 	    title=f"{ctx.author.name} unbanned: {member.name}", description=reason)
 	await ctx.send(embed=embed)
-
 
 # join command
 @bot.command()
@@ -63,9 +74,6 @@ async def join(ctx):
 #slap command
 @bot.command()
 async def slap(ctx, member: discord.Member, reason=None):
-	#if Member == None:
-	#await ctx.channel.send("You forgot to add the  "<@{}>".format user you want to slap after '!slap'" "<@{}>".format(ctx.author.id))
-	#else:
 	embed = discord.Embed(
 	    title=f':scream_cat: {member.name} has been slapped!',
 	    description=f'{reason}',
@@ -75,15 +83,14 @@ async def slap(ctx, member: discord.Member, reason=None):
 #warn command
 @bot.command()
 async def warn(ctx, *, member: discord.Member, reason=True):
-	#if Member == None:
-	#await ctx.channel.send("You forgot to add the  "<@{}>".format user you want to warn after '!warn'" "<@{}>".format(ctx.author.id))
-	#else:
 	embed = discord.Embed(
 	    title=f'{member.name} has been warnned (reason)!',
 	    description=f"{reason}",
 	    colour=discord.Colour.dark_red())
 	await ctx.send(embed=embed)
 
+
+#dm command
 @bot.command()
 async def dm(ctx, user_id=None, *, args=None):
     if user_id != None and args != None:
@@ -101,6 +108,7 @@ async def dm(ctx, user_id=None, *, args=None):
     else:
         await ctx.channel.send("You didn't provide a user's id and/or a message.")
 
+#dm_all command
 @bot.command()
 async def dm_all(ctx, *, args=None):
     if args != None:
@@ -122,9 +130,6 @@ async def dm_all(ctx, *, args=None):
 #clear command
 @bot.command(pass_text=True)
 async def clear(ctx, amount=1):
-	#if not ctx.author.permissions_in(ctx.channel).manage_messages:
-	#await ctx.send("Sorry you dont have permission!")
-	#return
 	embed = discord.Embed(
 	    title=f"{ctx.author.name} cleared: {ctx.channel.name}",
 	    description=f"{amount} messages were cleared",
@@ -258,8 +263,12 @@ async def lsjoke(ctx):
 async def reply(ctx, *, question=None):
 	responses = ["yes", "maybe", "no"]
 	if question == None:
-		await ctx.channel.send("You forgot to ask a question after '!reply'"
-		                       "<@{}>".format(ctx.author.id))
+  
+    #embed = discord.Embed(title = "You forgot to ask a question after '!reply'" "<@{}>".format(ctx.author.id),colour=discord.Colour.green())
+    
+    #await ctx.send(embed=embed)
+
+		await ctx.channel.send("You forgot to ask a question after '!reply' " "<@{}>".format(ctx.author.id))
 	else:
 		await ctx.send(
 		    f"question: {question}\nanswer: {random.choice(responses)}")
@@ -271,6 +280,9 @@ async def lsreply(ctx):
 	    title="list of replies in '!reply' command",
       description='yes, maybe, no',colour=discord.Colour.green())
   await ctx.send(embed=embed)
+
+#title = "You forgot to ask a question after '!reply'" "<@{}>".format(ctx.author.id)
+
 
 #Other commands
 
@@ -414,8 +426,8 @@ async def info(ctx):
 #month command to see the what month is it now!
 @bot.command()
 async def month(ctx):
- month = datetime.datetime.now().strftime('%B')
- await ctx.channel.send(month)
+  embed = discord.Embed(title='The Current Month', description= datetime.datetime.now().strftime('%B'),colour=discord.Colour.green())
+  await ctx.send(embed=embed) 
 
 token = 'MY_BOT_TOKEN'
 keep_alive.keep_alive()
