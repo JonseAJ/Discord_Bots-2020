@@ -70,9 +70,16 @@ async def on_message(message):
     if message.author == bot.user:
         return
     if message.content.startswith('-help'):
-        embed = discord.Embed(title="!help command", description="Shows this message", color=0x00ff00)
+        embed = discord.Embed(title="!help command", description="Shows this message", colour=discord.Colour.green())#help command
+        embed.add_field(name="The bot randomly reminds an online member to do their homework in the homework_reminder channel ", value="Check the homework_reminder channel!", inline=False)#homework_reminder
+        embed.add_field(name="The bot randomly reminds an online member to do 10 pushups in the pushup_reminder channel ",value="Check the pushup_reminder channel!", inline=False)#pushup_reminder
+        embed.add_field(name="The bot replies to a memeber with 'Did you say {Trigger_word}? Drop and give me 10, {the members name} if the member say any of the following Trigger words ", value="Trigger_words = [Workout, Pushup]", inline=False)#reply function to 'workout and pushup'
+        embed.add_field(name="The bot replies to a member with 'hi' follow by the member's name if the member say any of the following Trigger words ", value="Trigger_words = [Hello, hey, sup, hi]", inline=False)#reply function to 'Hello, hey, sup, hi'
+        embed.add_field(name="The bot tells what is the month when the member asks a question from the following Questions ", value="Questions = [what is the month, what is the current month, what is this month]", inline=False)#month function
 
         await channel.send(embed=embed)
+
+
 
 #Reminder functions
 #pushup_reminder
