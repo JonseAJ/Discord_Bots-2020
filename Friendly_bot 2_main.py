@@ -66,6 +66,14 @@ async def on_message(message):
             response = f"Now the month is {month}, {message.author.name}!"
             await channel.send(response)
 
+    channel = message.channel
+    if message.author == bot.user:
+        return
+    if message.content.startswith('-help'):
+        embed = discord.Embed(title="!help command", description="Shows this message", color=0x00ff00)
+
+        await channel.send(embed=embed)
+
 #Reminder functions
 #pushup_reminder
 @bot.event
