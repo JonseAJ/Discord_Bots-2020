@@ -220,17 +220,15 @@ async def say(ctx, *, message=None):
 
 #ping command
 @bot.command()
-async def ping(ctx, arg=None, option=1):
-    if arg == "pong":
-       await ctx.channel.send("You've already pinged yourself!")
-    else:
-      await ctx.channel.send(str(ctx.author.mention) + "Pong!")
-    if option == 1:
-      await ctx.channel.send("You've chose option one!")
-    else:
-      await ctx.channel.send("You've chose option" + str(option))
-      
-	#await ctx.send("<@{}>".format(ctx.author.id))
+async def ping_user(ctx, user: discord.User=None):
+    try:
+        await ctx.send("<@{}>".format(user.id))
+    except:
+        if user == None:
+            await ctx.send("Pls provide a user")
+        else:
+            await ctx.send("Invalid user")
+ 
 
 #joke command
 @bot.command()
