@@ -141,7 +141,7 @@ async def help(ctx):
 	    "Deletes all the channels and categories! However you cannot bomb in Jonse's (developer) Server. But your free to destroy your Server! Enjoy bombing! ",inline=False)
   embed.add_field(
 	    name='$info[Information]',
-	    value='Gives information about the bot and its developer')
+	    value='Gives information about the bot, its developer and gives an invite link which you can use to invite Proto bot to your own server!')
   await ctx.send(embed = embed) 
 
 #infomation command
@@ -153,12 +153,12 @@ async def info(ctx):
 	    colour=discord.Colour.red())
 	embed.add_field(
 	    name="bot's Command Prefix", value='$<command>', inline=False)
-	embed.add_field(name='Developer', value="Jonse Gamer", inline=False)
+	embed.add_field(name='Developer', value="Jonse(AJ)", inline=False)
 	embed.add_field(
 	    name="Developer's assistant", value="Coldfrost", inline=False)
 	embed.add_field(name= "invite", value= 'https://tinyurl.com/y3urj59j')
 
-	await ctx.send(embed=embed)  
+	await ctx.send(embed=embed) 
 
 	token=("MY_BOT_TOKEN")
 
