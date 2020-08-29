@@ -404,7 +404,8 @@ async def info(ctx):
 	embed.add_field(name='Developer', value="Jonse Gamer", inline=False)
 	embed.add_field(
 	    name="Developer's assistant", value="Coldfrost", inline=False)
-	embed.add_field(name= "invite", value= 'https://tinyurl.com/y53ketx9')
+	embed.add_field(name= "invite", value= 
+	'https://tinyurl.com/y6ho6zav')
 
 	await ctx.send(embed=embed)
 
