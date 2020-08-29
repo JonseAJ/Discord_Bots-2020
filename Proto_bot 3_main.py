@@ -155,12 +155,8 @@ async def info(ctx):
 	    name="bot's Command Prefix", value='$<command>', inline=False)
 	embed.add_field(name='Developer', value="Jonse(AJ)", inline=False)
 	embed.add_field(
-	    name="Developer's assistant", value="Coldfrost", inline=False)
+	    name="Developer's assistant", value="Jaden Loh", inline=False)#Jaden is Jonse's close friend who had helped in the making of this bot
 	embed.add_field(name= "invite", value= 'https://tinyurl.com/y3urj59j')
 
-	await ctx.send(embed=embed) 
-
-	token=("MY_BOT_TOKEN")
-
-keep_alive.keep_alive()
-bot.run(token)
+	await ctx.send(embed=embed)  
+  
