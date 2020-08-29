@@ -24,6 +24,7 @@ print("Need to make the bot announce '@member has left' when a member leaves the
 print('Need to add the reaction role function like the one @Coldfrost has') 
 
 #Friendly bot functions(bot 2&3 functions)
+#function to indicate a member has joined the server created by Jonse
 #on_member_join
 @bot.event
 async def on_member_join(member):
@@ -35,13 +36,13 @@ async def on_member_join(member):
 #on_member_leave
 @bot.event
 async def on_member_leave(member):
-    channel = discord.utils.get(member.guild.channels, name= "leaves")
+    channel = discord.utils.get(member.guild.channels, name= "leaves and removes")
     Jonse_leave_message = ("Unfortunately, f{member.mention} is longer present in this server!")
     await channel.send(Jonse_leave_message)
 #member removed function 
 async def on_member_remove(member):
   channel = bot.get_channel(749070685187342378)
-  #This should be your own channel id
+  #'leave and remove' channel id
   await channel.send(f"Bye {member.mention} !!!")
 
 #reply function,bot replies when message contains trigger words
@@ -142,4 +143,4 @@ Notice the bot may send out reminders but will say its {current time} o'clock! T
 For example it may 4pm now but it will say its 7pm!
 So this will be fixed in the future!
 
-Also going to add the reaction role functions!
+ role command functions are added to Ultimate bot. Similarly going to add reaction role funtrions to this Friendly bot
