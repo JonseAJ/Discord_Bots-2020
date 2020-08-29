@@ -149,7 +149,7 @@ async def help(ctx):
 async def info(ctx):
 	embed = discord.Embed(
 	    title='Ultimate bot',
-	    description='A bot build with  python',
+	    description='A bot build with Python 3.8.2',
 	    colour=discord.Colour.red())
 	embed.add_field(
 	    name="bot's Command Prefix", value='$<command>', inline=False)
