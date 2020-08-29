@@ -1,4 +1,8 @@
 Jonse first Discord bot.py!
+Also this is the best bot he has ever created!
+Fully upgraded and an improved version of his prototype of this bot!
+
+
 
 import discord
 from discord.ext import commands
@@ -420,7 +424,7 @@ async def help(ctx):
 	    colour=discord.Colour.green())
 	embed.add_field(name='!kick[user]', value='Kicks a member', inline=False)
 	embed.add_field(name='!ban[user]', value='Bans a member', inline=False)
-	#embed.add_field(name='!unban[banned user]', value='Unbans a banned member', inline=False) not working
+	#embed.add_field(name='!unban[banned user]', value='Unbans a banned member', inline=False)
 	embed.add_field(
 	    name='!join[VC]', value='bot joins the voice channel', inline=False)
 	embed.add_field(
@@ -496,7 +500,7 @@ async def help(ctx):
 	    inline=False)
 	embed.add_field(
 	    name='!info[Information]',
-	    value='Gives information about the bot and its developer',
+	    value='Gives information about the bot, its developer and gives an invite link which you can use to invite Ultimate bot to your own server!',
 	    inline=False)
     
   
