@@ -419,6 +419,7 @@ async def help(ctx):
 	    colour=discord.Colour.green())
 	embed.add_field(name='!kick[user]', value='Kicks a member', inline=False)
 	embed.add_field(name='!ban[user]', value='Bans a member', inline=False)
+	#embed.add_field(name='!unban[banned user]', value='Unbans a banned member', inline=False) not working
 	embed.add_field(
 	    name='!join[VC]', value='bot joins the voice channel', inline=False)
 	embed.add_field(
@@ -468,10 +469,7 @@ async def help(ctx):
 	    inline=False)
 	embed.add_field(
 	    name='!rps[random]', value='Rock, paper, scissors game', inline=False)
-	embed.add_field(
-	    name='!ls[commands with >1 possible outcomes]',
-	    value="Shows the list of possible outcomes for the command. Works only on !joke,!reply,!rps,!coinflip,!dice commands",
-	    inline=False)       
+      
 	embed.add_field(
 	    name='!say[message]',
 	    value="Repeats what the author said after !say",
@@ -483,6 +481,10 @@ async def help(ctx):
 	    name='!reply[question][random]',
 	    value='Randomly replies to a question',
 	    inline=False)
+	embed.add_field(
+	    name='!ls[commands with >1 possible outcomes]',
+	    value="Shows the list of possible outcomes for the command. Works only on !joke,!reply,!rps,!coinflip,!dice commands",
+	    inline=False)       
 	embed.add_field(
 	    name='!month',
 	    value='The bot says the current month!',
@@ -500,6 +502,7 @@ async def help(ctx):
      
 
 	await ctx.send(embed=embed)
+
 
 
 token = 'MY_BOT_TOKEN'
