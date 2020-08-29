@@ -91,10 +91,9 @@ async def on_message(message):
         return
     if message.content.startswith('-info'):
         embed = discord.Embed(title="Friendly bot", description="A bot built with Python 3.8.2", colour=discord.Colour.orange())#info command 
-        embed = discord.Embed(title="Bot's command prefix", description="-<command>", colour=discord.Colour.orange())#info command        
+        embed.add_field(name="Bot's command prefix", value="-<command>")#command prefix       
         embed.add_field(name="Developer", value="Jonse(AJ)", inline=False)#Developer info   
-        embed.add_field(name="invite", value="https://tinyurl.com/yyaleu7t", inline=False)            
-
+        embed.add_field(name="invite", value="https://tinyurl.com/yyaleu7t", inline=False)#invite link
 
 
 
