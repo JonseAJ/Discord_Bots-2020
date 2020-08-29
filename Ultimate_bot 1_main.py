@@ -401,7 +401,7 @@ async def rules(ctx):
 async def info(ctx):
 	embed = discord.Embed(
 	    title='Ultimate bot',
-	    description='A bot build with  python',
+	    description='A bot build with Python 3.8.2',
 	    colour=discord.Colour.green())
 	embed.add_field(
 	    name="bot's Command Prefix", value='!<command>', inline=False)
@@ -412,7 +412,6 @@ async def info(ctx):
 	'https://tinyurl.com/y6ho6zav')
 
 	await ctx.send(embed=embed)
-
 
 #Help command
 bot.remove_command("help")
