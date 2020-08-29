@@ -85,15 +85,13 @@ async def on_message(message):
         embed.add_field(name="-info command ", value="Gives information about the bot, its developer and gives an invite link which you can use to invite Friendly bot to your own server!", inline=False)#invite command        
 
         await channel.send(embed=embed)
-#info command
-    channel = message.channel
-    if message.author == bot.user:
-        return
+#info command    
     if message.content.startswith('-info'):
         embed = discord.Embed(title="Friendly bot", description="A bot built with Python 3.8.2", colour=discord.Colour.orange())#info command 
-        embed.add_field(name="Bot's command prefix", value="-<command>")#command prefix       
+        embed.add_field(name="Bot's command prefix", value="-<command>")#command prefix command        
         embed.add_field(name="Developer", value="Jonse(AJ)", inline=False)#Developer info   
-        embed.add_field(name="invite", value="https://tinyurl.com/yyaleu7t", inline=False)#invite link
+        embed.add_field(name="invite", value="https://tinyurl.com/yyaleu7t", inline=False)
+        await channel.send(embed=embed)   
 
 
 
