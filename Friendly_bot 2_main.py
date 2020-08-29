@@ -31,13 +31,18 @@ async def on_member_join(member):
     Jonse_welcome_message = (f"{member.mention} Welcome to Jonse(AJ) Official Server! Make sure to read the rules and understand them. Bans will occur after 2 warnings! So please do not violate any rules! Hope you like the warm and friendly atmosphere in this server. Thank you for joining!")
     await channel.send(Jonse_welcome_message)
 
+#function to indicate a member isn't longer present in the server 
 #on_member_leave
 @bot.event
 async def on_member_leave(member):
     channel = discord.utils.get(member.guild.channels, name= "leaves")
     Jonse_leave_message = ("Unfortunately, f{member.mention} is longer present in this server!")
     await channel.send(Jonse_leave_message)
-
+#member removed function 
+async def on_member_remove(member):
+  channel = bot.get_channel(749070685187342378)
+  #This should be your own channel id
+  await channel.send(f"Bye {member.mention} !!!")
 
 #reply function,bot replies when message contains trigger words
 @bot.event
@@ -65,19 +70,29 @@ async def on_message(message):
             month = datetime.datetime.now().strftime('%B')
             response = f"Now the month is {month}, {message.author.name}!"
             await channel.send(response)
-
+#help command
     channel = message.channel
     if message.author == bot.user:
         return
     if message.content.startswith('-help'):
-        embed = discord.Embed(title="!help command", description="Shows this message", colour=discord.Colour.green())#help command
+        embed = discord.Embed(title="-help command", description="Shows this message", colour=discord.Colour.orange())#help command
         embed.add_field(name="The bot randomly reminds an online member to do their homework in the homework_reminder channel ", value="Check the homework_reminder channel!", inline=False)#homework_reminder
         embed.add_field(name="The bot randomly reminds an online member to do 10 pushups in the pushup_reminder channel ",value="Check the pushup_reminder channel!", inline=False)#pushup_reminder
         embed.add_field(name="The bot replies to a memeber with 'Did you say {Trigger_word}? Drop and give me 10, {the members name} if the member say any of the following Trigger words ", value="Trigger_words = [Workout, Pushup]", inline=False)#reply function to 'workout and pushup'
         embed.add_field(name="The bot replies to a member with 'hi' follow by the member's name if the member say any of the following Trigger words ", value="Trigger_words = [Hello, hey, sup, hi]", inline=False)#reply function to 'Hello, hey, sup, hi'
         embed.add_field(name="The bot tells what is the month when the member asks a question from the following Questions ", value="Questions = [what is the month, what is the current month, what is this month]", inline=False)#month function
+        embed.add_field(name="-info command ", value="Gives information about the bot, its developer and gives an invite link which you can use to invite Friednly bot to your own server!", inline=False)#invite command        
 
         await channel.send(embed=embed)
+#info command
+    channel = message.channel
+    if message.author == bot.user:
+        return
+    if message.content.startswith('-info'):
+        embed = discord.Embed(title="Friendly bot", description="A bot built with Python 3.8.2", colour=discord.Colour.orange())#info command  
+        embed.add_field(name="Developer", value="Jonse(AJ)", inline=False)#Developer info   
+        embed.add_field(name="invite", value="https://tinyurl.com/yyaleu7t", inline=False)            
+
 
 
 
