@@ -6,6 +6,7 @@ import random
 import keep_alive
 import datetime
 
+
 #command prefix
 bot = commands.Bot(command_prefix='!')
 
@@ -13,24 +14,25 @@ bot = commands.Bot(command_prefix='!')
 @bot.event
 async def on_ready():
 	await bot.change_presence(
-	    status=discord.Status.online, activity=discord.Game("!help"))
+	    status=discord.Status.online, activity=discord.Game("Send !help  to see what I can do"))
 	print('Discord Ultimate bot is online.', )
 	print(
 	    'Need to add !unban[user],!join[VC],!leave[VC],!mute[user],!unmute[user] to Ultimate bot'
 	)
-#error handling 
+
+#error handling vvv
 @bot.event
 async def on_command_error(ctx, error):
-  #embed = discord.Embed(name= f'Error: {error}', colour=discord.Colour.red())
   await ctx.send(f'Error: {error}')
+  #embed = discord.Embed(name= f'Error: {error}', colour=discord.Colour.red())
   #await ctx.send(embed=embed)
-
+#^^^trying to add embed to error handling reply function!
 
 
 #Admin commands
 
 @bot.command()
-#@commands.has_permissions(administrator=True)
+#@commands.has_permissions(administrator=True)-only adding this if I only want qdmin to kick 
 async def kick(ctx, member: discord.Member, reason=None):
 	await member.kick(reason=reason)
 	embed = discord.Embed(
@@ -63,7 +65,7 @@ async def unban(ctx, member, *, reason=None):
 	await ctx.send(embed=embed)
 
 # join command
-@bot.command()
+@bot.command(pass_context=True)
 async def join(ctx):
 	if ctx.author.voice is None or ctx.author.voice.channel is None:
 		await ctx.send("Be in a voice channel first!")
@@ -124,6 +126,58 @@ async def dm_all(ctx, *, args=None):
 
     else:
         await ctx.channel.send("A message was not provided.")
+
+#suggest command
+@bot.command()
+async def suggest(ctx,*,suggestion):
+  author=ctx.message.author
+  #file=open("suggestions.txt","a+")
+  #file.write(str(author)+" : "+suggestion+"\n")
+  embed = discord.Embed(
+    title = 'Suggestion',
+    description = "This Was Suggested By",
+    colour = discord.Colour.orange()
+  )
+
+  embed.set_footer(text = "Made By Jonse(AJ) with python 3.8.2")
+  embed.set_author(name = "Moderation#2520")
+  embed.add_field(name = author, value = suggestion)
+  await ctx.send("Suggestion Submitted")
+  channel = bot.get_channel(746566318521843793)
+  msg = await channel.send(embed=embed)
+  await msg.add_reaction('👍')
+  await msg.add_reaction('👎')
+
+#adding adding roles
+#AutoRole1
+@bot.command()
+async def tester_role(ctx):
+    member = ctx.message.author
+    role = ctx.guild.get_role(731090278450200586)
+    await member.add_roles(role)
+    await ctx.send("{} Have Been Given The Role!l {}".format(member.mention,role.mention),)
+    await ctx.send("You Are Now A {} {}".format(role.mention,member.mention)) 
+    celebration_upon_new_role='👏🎉🥳👏🥳🎉👏!'
+    await ctx.send(celebration_upon_new_role)
+
+#AutoRole2
+@bot.command()
+async def member_role(ctx):
+    member = ctx.message.author
+    role = ctx.guild.get_role(749089331787858000)
+    await member.add_roles(role)
+    await ctx.send("{} Have Been Given The Role! {}".format(member.mention,role.mention),)
+    await ctx.send("You Are Now A {} {}".format(role.mention,member.mention)) 
+    celebration_upon_new_role='👏🎉🥳👏🥳🎉👏!'
+    await ctx.send(celebration_upon_new_role)
+
+
+#Create Role
+@bot.command()
+async def create_role(ctx,name,*,reason=None):
+  await ctx.guild.create_role(name=name, colour=discord.Colour.orange())
+
+
 
 
 #Server mannagements commands
@@ -218,9 +272,10 @@ async def say(ctx, *, message=None):
 		#await ctx.message.delete()
 		await ctx.send(message)
 
+
 #ping command
 @bot.command()
-async def ping_user(ctx, user: discord.User=None):
+async def ping(ctx, user: discord.User=None):
     try:
         await ctx.send("<@{}>".format(user.id))
     except:
@@ -284,79 +339,11 @@ async def lsreply(ctx):
 
 #Other commands
 
-
-#Help command
-bot.remove_command("help")
+#month command to see the what month is it now!
 @bot.command()
-async def help(ctx):
-	embed = discord.Embed(
-	    title='!help command',
-	    description='Shows this message',
-	    colour=discord.Colour.green())
-	embed.add_field(name='!kick[user]', value='Kicks a member', inline=False)
-	embed.add_field(name='!ban[user]', value='Bans a member', inline=False)
-	embed.add_field(
-	    name='!join[VC]', value='bot joins the voice channel', inline=False)
-	embed.add_field(
-	    name='!slap[user]',
-	    value=' A member will be slapped by another member',
-	    inline=False)
-	embed.add_field(
-	    name='!warn[user]',
-	    value=' A member will be warnned by another member',
-	    inline=False)
-	embed.add_field(
-	    name='!dm[user]',
-	    value="Dms a member with the author's message",
-	    inline=False)
-	embed.add_field(
-	    name='!dm_all[Everyone]',
-	    value="Dms all the members of the server with the author's message",
-	    inline=False)
-	embed.add_field(
-	    name='!clear[amount]',
-	    value='Clears a certain number of messages',
-	    inline=False)
-	embed.add_field(
-	    name='!coinflip[random]',
-	    value='Flips a coin to get either head or tails',
-	    inline=False)
-	embed.add_field(
-	    name='!dice[random]',
-	    value='Rolls a dice to get a number from 1-6 ',
-	    inline=False)
-	embed.add_field(
-	    name='!rps[random]', value='Rock, paper, scissors game', inline=False)
-	embed.add_field(
-	    name='!say[message]',
-	    value="Repeats what the author said after !say",
-	    inline=False)
-	embed.add_field(
-	    name='!ping[author]', value='Pings the author', inline=False)
-	embed.add_field(name='!joke[random]', value='Tells a joke', inline=False)
-	embed.add_field(
-	    name='!reply[question][random]',
-	    value='Randomly replies to a question',
-	    inline=False)
-	embed.add_field(
-	    name='!rules[Information]',
-	    value='Tells the rules of the server',
-	    inline=False)
-	embed.add_field(
-	    name='!info[Information]',
-	    value='Gives information about the bot and its developer',
-	    inline=False)
-	embed.add_field(
-	    name='!nuke[Destruction]',
-	    value=
-	    'Deletes all the channels and categories! Therefore this command will be only available to trusted members only!',
-	    inline=False)
-	embed.add_field(
-	    name='!ls[commands with >1 possible outcomes]',
-	    value="Shows the list of possible outcomes for the command. Works only on !joke,!reply,!rps,!coinflip,!dice commands",
-	    inline=False)      
-
-	await ctx.send(embed=embed)
+async def month(ctx):
+  embed = discord.Embed(title='The Current Month', description= datetime.datetime.now().strftime('%B'),colour=discord.Colour.green())
+  await ctx.send(embed=embed) 
 
 #Rules command
 @bot.command()
@@ -421,11 +408,99 @@ async def info(ctx):
 
 	await ctx.send(embed=embed)
 
-#month command to see the what month is it now!
+
+#Help command
+bot.remove_command("help")
 @bot.command()
-async def month(ctx):
-  embed = discord.Embed(title='The Current Month', description= datetime.datetime.now().strftime('%B'),colour=discord.Colour.green())
-  await ctx.send(embed=embed) 
+async def help(ctx):
+	embed = discord.Embed(
+	    title='!help command',
+	    description='Shows this message',
+	    colour=discord.Colour.green())
+	embed.add_field(name='!kick[user]', value='Kicks a member', inline=False)
+	embed.add_field(name='!ban[user]', value='Bans a member', inline=False)
+	embed.add_field(
+	    name='!join[VC]', value='bot joins the voice channel', inline=False)
+	embed.add_field(
+	    name='!slap[user]',
+	    value=' A member will be slapped by another member',
+	    inline=False)
+	embed.add_field(
+	    name='!warn[user]',
+	    value=' A member will be warnned by another member',
+	    inline=False)
+	embed.add_field(
+	    name='!dm[user]',
+	    value="Dms a member with the author's message",
+	    inline=False)
+	embed.add_field(
+	    name='!dm_all[Everyone]',
+	    value="Dms all the members of the server with the author's message",
+	    inline=False)
+	embed.add_field(
+	    name='!suggest[Suggstion]',
+	    value="A member can suggest a suggestion in any channel but it will be submitted to the suggestion channel",
+	    inline=False)    
+	embed.add_field(
+	    name='![role.name]_role[User]',
+	    value='A member will receive a role. The currently available roles are the !tester_role & !member_role',
+	    inline=False)
+	#embed.add_field(
+	#    name='![newly created role.name]_role[New_role]',
+	#    value='A member can create a new role',
+	#    inline=False) In progress      
+	embed.add_field(
+	    name='!clear[amount]',
+	    value='Clears a certain number of messages',
+	    inline=False)
+	embed.add_field(
+	    name='!nuke[Destruction]',
+	    value=
+	    'Deletes all the channels and categories! Therefore this command will be only available to trusted members only!',
+	    inline=False)      
+	embed.add_field(
+	    name='!coinflip[random]',
+	    value='Flips a coin to get either head or tails',
+	    inline=False)
+	embed.add_field(
+	    name='!dice[random]',
+	    value='Rolls a dice to get a number from 1-6 ',
+	    inline=False)
+	embed.add_field(
+	    name='!rps[random]', value='Rock, paper, scissors game', inline=False)
+	embed.add_field(
+	    name='!ls[commands with >1 possible outcomes]',
+	    value="Shows the list of possible outcomes for the command. Works only on !joke,!reply,!rps,!coinflip,!dice commands",
+	    inline=False)       
+	embed.add_field(
+	    name='!say[message]',
+	    value="Repeats what the author said after !say",
+	    inline=False)
+	embed.add_field(
+	    name='!ping[author]', value='Pings the author', inline=False)
+	embed.add_field(name='!joke[random]', value='Tells a joke', inline=False)
+	embed.add_field(
+	    name='!reply[question][random]',
+	    value='Randomly replies to a question',
+	    inline=False)
+	embed.add_field(
+	    name='!month',
+	    value='The bot says the current month!',
+	    inline=False)  
+	embed.add_field(
+	    name='!rules[Information]',
+	    value='Tells the rules of the server',
+	    inline=False)
+	embed.add_field(
+	    name='!info[Information]',
+	    value='Gives information about the bot and its developer',
+	    inline=False)
+    
+  
+     
+
+	await ctx.send(embed=embed)
+
 
 token = 'MY_BOT_TOKEN'
 keep_alive.keep_alive()
