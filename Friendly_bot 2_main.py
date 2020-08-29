@@ -82,7 +82,7 @@ async def on_message(message):
         embed.add_field(name="The bot replies to a memeber with 'Did you say {Trigger_word}? Drop and give me 10, {the members name} if the member say any of the following Trigger words ", value="Trigger_words = [Workout, Pushup]", inline=False)#reply function to 'workout and pushup'
         embed.add_field(name="The bot replies to a member with 'hi' follow by the member's name if the member say any of the following Trigger words ", value="Trigger_words = [Hello, hey, sup, hi]", inline=False)#reply function to 'Hello, hey, sup, hi'
         embed.add_field(name="The bot tells what is the month when the member asks a question from the following Questions ", value="Questions = [what is the month, what is the current month, what is this month]", inline=False)#month function
-        embed.add_field(name="-info command ", value="Gives information about the bot, its developer and gives an invite link which you can use to invite Friednly bot to your own server!", inline=False)#invite command        
+        embed.add_field(name="-info command ", value="Gives information about the bot, its developer and gives an invite link which you can use to invite Friendly bot to your own server!", inline=False)#invite command        
 
         await channel.send(embed=embed)
 #info command
