@@ -72,9 +72,6 @@ async def on_message(message):
             response = f"Now the month is {month}, {message.author.name}!"
             await channel.send(response)
 #help command
-    channel = message.channel
-    if message.author == bot.user:
-        return
     if message.content.startswith('-help'):
         embed = discord.Embed(title="-help command", description="Shows this message", colour=discord.Colour.orange())#help command
         embed.add_field(name="The bot randomly reminds an online member to do their homework in the homework_reminder channel ", value="Check the homework_reminder channel!", inline=False)#homework_reminder
@@ -91,8 +88,7 @@ async def on_message(message):
         embed.add_field(name="Bot's command prefix", value="-<command>")#command prefix command        
         embed.add_field(name="Developer", value="Jonse(AJ)", inline=False)#Developer info   
         embed.add_field(name="invite", value="https://tinyurl.com/yyaleu7t", inline=False)
-        await channel.send(embed=embed)   
-
+        await channel.send(embed=embed) 
 
 
 #Reminder functions
