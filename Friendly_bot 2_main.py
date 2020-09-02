@@ -91,6 +91,8 @@ async def on_message(message):
         await channel.send(embed=embed) 
 
 
+	
+	
 #Reminder functions
 #pushup_reminder
 @bot.event
@@ -103,10 +105,11 @@ async def pushup_reminder():
         online_members.append(member.id)
     if len(online_members) > 0:
       user = random.choice(online_members)
-      channel = bot.get_channel(746615461038391307)
+      channel = discord.utils.get(bot.guilds[0].channels, name="pushup_reminder")
+      #channel = bot.get_channel(746615461038391307) #only if i want the reminder to work in just this channel and not in every channel with the name "pushup_reminder".
       current_time = int(datetime.datetime.now().strftime("%I")) 
       message = f"It's {current_time} o'clock!, time for some pushups <@{user}>!"
-      #message = f"It's time for some pushups <@{user}>!"
+      #message = f"It's time for some pushups <@{user}>!" #only if i want the reminder to work without bot giving the current time
       await channel.send(message)
     await asyncio.sleep(3600)
 bot.loop.create_task(pushup_reminder())
