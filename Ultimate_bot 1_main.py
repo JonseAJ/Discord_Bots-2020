@@ -36,7 +36,7 @@ async def on_command_error(ctx, error):
 #Admin commands
 
 @bot.command()
-#@commands.has_permissions(administrator=True)-only adding this if I only want qdmin to kick 
+#@commands.has_permissions(administrator=True)#only adding this if I only want admin to kick 
 async def kick(ctx, member: discord.Member, reason=None):
 	await member.kick(reason=reason)
 	embed = discord.Embed(
@@ -59,7 +59,7 @@ async def ban(ctx, member: discord.Member, reason=None):
 
 #unban command not working
 @bot.command()
-#@commands.has_permissions(administrator=True)
+#@commands.has_permissions(administrator=True)#only adding this if I only want admin to kick 
 async def unban(ctx, member, *, reason=None):
 	member = await bot.fetch_user(int(member))
 	await ctx.guild.unban(member, reason=reason)
