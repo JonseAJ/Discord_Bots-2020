@@ -54,6 +54,7 @@ async def on_member_remove(member):
   await channel.send(f"{member.name} has been kicked!")
   
 #reply function,bot replies when message contains trigger words
+
 @bot.event
 async def on_message(message):
     if message.author == bot.user:
@@ -107,10 +108,9 @@ async def on_message(message):
         embed.add_field(name="Bot's command prefix", value="-<command>")#command prefix command        
         embed.add_field(name="Developer", value="Jonse(AJ)", inline=False)#Developer info   
         embed.add_field(name="invite", value="https://tinyurl.com/yyaleu7t", inline=False)
-        await channel.send(embed=embed)                    
-
-
-
+        await channel.send(embed=embed)
+    
+                   
 
 #Reminder functions
 #pushup_reminder
