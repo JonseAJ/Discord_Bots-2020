@@ -42,7 +42,7 @@ async def on_member_join(member):
 async def on_member_leave(member):
     #channel = bot.get_channel(750961593277218838)
     channel = discord.utils.get(member.guild.channels, name= "leaves and removes")
-    Jonse_leave_message = ("Unfortunately", f"{member.mention} is longer present in this server!")
+    Jonse_leave_message = ( f"Unfortunately {member.mention} has left and is longer present in this server!")
     await channel.send(Jonse_leave_message)
 
 #member removed function 
@@ -51,7 +51,7 @@ async def on_member_remove(member):
   channel = bot.get_channel(750961593277218838)
   #^^^'leave and remove' channel id
   #channel = discord.utils.get(bot.guilds[0].channels, name="leaves and removes")
-  await channel.send(f"Bye {member.name} !!!")
+  await channel.send(f"{member.name} has been kicked!")
   
 #reply function,bot replies when message contains trigger words
 @bot.event
@@ -96,7 +96,8 @@ async def on_message(message):
         embed.add_field(name="Bot's command prefix", value="-<command>")#command prefix command        
         embed.add_field(name="Developer", value="Jonse(AJ)", inline=False)#Developer info   
         embed.add_field(name="invite", value="https://tinyurl.com/yyaleu7t", inline=False)
-        await channel.send(embed=embed)                   
+        await channel.send(embed=embed)                    
+
 
 
 
@@ -114,8 +115,8 @@ async def pushup_reminder():
       user = random.choice(online_members)
       channel = discord.utils.get(bot.guilds[0].channels, name="pushup_reminder")
       #channel = bot.get_channel(746615461038391307) #only if i want the reminder to work in just this channel and not in every channel with the name "pushup_reminder".
-      current_time = int(datetime.datetime.now().strftime("%I"))
-      message = f"It's {current_time} o'clock!, time for some pushups <@{user}>!"
+      current_time = int(datetime.datetime.now().strftime("%H"))
+      message = f"It's {current_time-4} o'clock!, time for some pushups <@{user}>!"
       #message = f"It's time for some pushups <@{user}>!" #only if i want the reminder to work without bot giving the current time
       await channel.send(message)
     await asyncio.sleep(3600)
@@ -132,8 +133,8 @@ async def homework_reminder():
       user = random.choice(online_members)
       channel = discord.utils.get(bot.guilds[0].channels, name="homework_reminder")      
       #channel = bot.get_channel(746615551576768542) #only if i want the reminder to work in just this channel and not in every channel with the name "homework_reminder".      
-      current_time = int(datetime.datetime.now().strftime("%I"))
-      message = f"It's {current_time} o'clock!, do you have any homework <@{user}>? If you have, do it now! Do not procrastinate <@{user}>!"
+      current_time = int(datetime.datetime.now().strftime("%H"))
+      message = f"It's {current_time-4} o'clock!, do you have any homework <@{user}>? If you have, do it now! Do not procrastinate <@{user}>!"
       #message = f"Do you have any homework <@{user}>? If you have, do it now! Do not procrastinate <@{user}>!"  #only if i want the reminder to work without bot giving the current time
       await channel.send(message)
     await asyncio.sleep(3600)
