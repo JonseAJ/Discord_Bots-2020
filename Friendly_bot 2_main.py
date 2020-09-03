@@ -79,6 +79,16 @@ async def on_message(message):
             month = datetime.datetime.now().strftime('%B')
             response = f"Now the month is {month}, {message.author.name}!"
             await channel.send(response)
+    
+    Trigger_words = ["What is the time", "show me the time", "tell me the time"]
+    channel = message.channel
+    for Trigger_word in Trigger_words:
+        if Trigger_word.lower() in message.content.lower():
+            clock = int(datetime.datetime.now().strftime('%H'))
+            m = int(datetime.datetime.now().strftime("%M"))
+            s = int(datetime.datetime.now().strftime("%S"))
+            response = f"Now the time now on the server's digital clock is {clock-4}:{m}:{s}!, {message.author.name}!"
+            await channel.send(response)           
 #help command
     if message.content.startswith('-help'):
         embed = discord.Embed(title="-help command", description="Shows this message", colour=discord.Colour.orange())#help command
@@ -87,6 +97,7 @@ async def on_message(message):
         embed.add_field(name="The bot replies to a memeber with 'Did you say {Trigger_word}? Drop and give me 10, {the members name} if the member say any of the following Trigger words ", value="Trigger_words = [Workout, Pushup]", inline=False)#reply function to 'workout and pushup'
         embed.add_field(name="The bot replies to a member with 'hi' follow by the member's name if the member say any of the following Trigger words ", value="Trigger_words = [Hello, hey, sup, hi]", inline=False)#reply function to 'Hello, hey, sup, hi'
         embed.add_field(name="The bot tells what is the month when the member asks a question from the following Questions ", value="Questions = [what is the month, what is the current month, what is this month]", inline=False)#month function
+        embed.add_field(name="The bot tells what is the time when the member asks a question from the following Questions ", value="Questions = [What is the time, show me the time, tell me the time]", inline=False)#time function        
         embed.add_field(name="-info command ", value="Gives information about the bot, its developer and gives an invite link which you can use to invite Friendly bot to your own server!", inline=False)#invite command        
 
         await channel.send(embed=embed)
@@ -116,8 +127,8 @@ async def pushup_reminder():
       channel = discord.utils.get(bot.guilds[0].channels, name="pushup_reminder")
       #channel = bot.get_channel(746615461038391307) #only if i want the reminder to work in just this channel and not in every channel with the name "pushup_reminder".
       current_time = int(datetime.datetime.now().strftime("%H"))
-      message = f"It's {current_time-4} o'clock!, time for some pushups <@{user}>!"
-      #message = f"It's time for some pushups <@{user}>!" #only if i want the reminder to work without bot giving the current time
+      current_time2 = int(datetime.datetime.now().strftime("%M"))
+      message = f"It's now {current_time-4}:{current_time2}!, time for some pushups <@{user}>!"
       await channel.send(message)
     await asyncio.sleep(3600)
 bot.loop.create_task(pushup_reminder())
@@ -134,8 +145,8 @@ async def homework_reminder():
       channel = discord.utils.get(bot.guilds[0].channels, name="homework_reminder")      
       #channel = bot.get_channel(746615551576768542) #only if i want the reminder to work in just this channel and not in every channel with the name "homework_reminder".      
       current_time = int(datetime.datetime.now().strftime("%H"))
-      message = f"It's {current_time-4} o'clock!, do you have any homework <@{user}>? If you have, do it now! Do not procrastinate <@{user}>!"
-      #message = f"Do you have any homework <@{user}>? If you have, do it now! Do not procrastinate <@{user}>!"  #only if i want the reminder to work without bot giving the current time
+      current_time2 = int(datetime.datetime.now().strftime("%M"))
+      message = f"It's now {current_time-4}:{current_time2}!, do you have any homework <@{user}>? If you have, do it now! Do not procrastinate <@{user}>!"
       await channel.send(message)
     await asyncio.sleep(3600)
 bot.loop.create_task(homework_reminder())
