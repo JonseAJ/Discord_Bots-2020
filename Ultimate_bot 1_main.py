@@ -35,6 +35,7 @@ async def on_command_error(ctx, error):
 
 #Admin commands
 
+#kick command
 @bot.command()
 #@commands.has_permissions(administrator=True)#only adding this if I only want admin to kick 
 async def kick(ctx, member: discord.Member, reason=None):
