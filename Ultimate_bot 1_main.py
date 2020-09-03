@@ -11,15 +11,17 @@ import keep_alive
 import datetime
 
 
+
 #command prefix
 bot = commands.Bot(command_prefix='!')
+
 
 #when bot is ready
 @bot.event
 async def on_ready():
 	await bot.change_presence(
-	    status=discord.Status.online, activity=discord.Game("Send !help  to see what I can do"))
-	print('Discord Ultimate bot is online.', )
+	    status=discord.Status.online, activity=discord.Game("Send !help  to see what I can do!"))
+	print('Discord Ultimate bot"" is online.', )
 	print(
 	    'Need to add !unban[user],!join[VC],!leave[VC],!mute[user],!unmute[user] to Ultimate bot'
 	)
@@ -29,6 +31,7 @@ async def on_ready():
 async def on_command_error(ctx, error):
   embed = discord.Embed(description= f'Error: {error}', colour=discord.Colour.red())
   await ctx.send(embed=embed)
+
 
 #Admin commands
 
@@ -66,12 +69,14 @@ async def unban(ctx, member, *, reason=None):
 	await ctx.send(embed=embed)
 
 # join command
-@bot.command(pass_context=True)
+@bot.command()
 async def join(ctx):
-	if ctx.author.voice is None or ctx.author.voice.channel is None:
-		await ctx.send("Be in a voice channel first!")
-		channel = ctx.message.author.voice.voice_channel
-		await channel.connect()
+    if ctx.author.voice is None or ctx.author.voice.channel is None: # If the user is not connected to channel
+        await ctx.send("Be in a voice channel first!")
+        return
+    channel = ctx.message.author.voice.voice_channel
+    await channel.connect()
+ 
 
 
 #slap command
@@ -150,7 +155,7 @@ async def suggest(ctx,*,suggestion):
   await msg.add_reaction('👎')
 
 #adding adding roles
-#AutoRole1
+#AutoRole1- tester role
 @bot.command()
 async def tester_role(ctx):
     member = ctx.message.author
@@ -161,7 +166,7 @@ async def tester_role(ctx):
     celebration_upon_new_role='👏🎉🥳👏🥳🎉👏!'
     await ctx.send(celebration_upon_new_role)
 
-#AutoRole2
+#AutoRole2-member AutoRole1
 @bot.command()
 async def member_role(ctx):
     member = ctx.message.author
@@ -195,6 +200,7 @@ async def clear(ctx, amount=1):
 
 #forbidden nuke command
 @bot.command()
+@commands.has_permissions(administrator=True)
 async def nuke(ctx):
     channels = ctx.guild.channels
 
@@ -335,8 +341,6 @@ async def lsreply(ctx):
       description='yes, maybe, no',colour=discord.Colour.green())
   await ctx.send(embed=embed)
 
-#title = "You forgot to ask a question after '!reply'" "<@{}>".format(ctx.author.id)
-
 
 #Other commands
 
@@ -409,6 +413,7 @@ async def info(ctx):
 	'https://tinyurl.com/y6ho6zav')
 
 	await ctx.send(embed=embed)
+
 
 #Help command
 bot.remove_command("help")
