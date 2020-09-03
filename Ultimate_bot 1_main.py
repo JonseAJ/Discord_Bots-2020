@@ -303,8 +303,6 @@ async def joke(ctx):
 	    'This graveyard looks overcrowded People must be dying to get in there. #I agree this joke is a bit dark'
 	]
 	await ctx.send(random.choice(jokes))
-#list of jokes in joke command
- 
 
 #list of jokes in joke command
 @bot.command()
