@@ -27,11 +27,8 @@ async def on_ready():
 #error handling vvv
 @bot.event
 async def on_command_error(ctx, error):
-  await ctx.send(f'Error: {error}')
-  #embed = discord.Embed(name= f'Error: {error}', colour=discord.Colour.red())
-  #await ctx.send(embed=embed)
-#^^^trying to add embed to error handling reply function!
-
+  embed = discord.Embed(description= f'Error: {error}', colour=discord.Colour.red())
+  await ctx.send(embed=embed)
 
 #Admin commands
 
