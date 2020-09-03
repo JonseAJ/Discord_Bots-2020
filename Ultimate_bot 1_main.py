@@ -142,14 +142,14 @@ async def suggest(ctx,*,suggestion):
   embed = discord.Embed(
     title = 'Suggestion',
     description = "This Was Suggested By",
-    colour = discord.Colour.orange()
-  )
+    colour = discord.Colour.orange())
 
   embed.set_footer(text = "Made By Jonse(AJ) with python 3.8.2")
   embed.set_author(name = "Moderation#2520")
   embed.add_field(name = author, value = suggestion)
   await ctx.send("Suggestion Submitted")
-  channel = bot.get_channel(746566318521843793)
+  #channel = bot.get_channel(750961236698726420)
+  channel = discord.utils.get(bot.guilds[0].channels, name="suggestions") #another way of sending the suggestion to the channel 
   msg = await channel.send(embed=embed)
   await msg.add_reaction('👍')
   await msg.add_reaction('👎')
