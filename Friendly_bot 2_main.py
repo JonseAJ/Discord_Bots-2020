@@ -38,10 +38,13 @@ async def on_member_leave(member):
     channel = discord.utils.get(member.guild.channels, name= "leaves and removes")
     Jonse_leave_message = ("Unfortunately, f{member.mention} is longer present in this server!")
     await channel.send(Jonse_leave_message)
+
 #member removed function 
+@bot.event
 async def on_member_remove(member):
-  channel = bot.get_channel(749070685187342378)
+  channel = bot.get_channel(750961593277218838)
   #'leave and remove' channel id
+  #channel = discord.utils.get(member.guild.channels, name= "leaves and removes")
   await channel.send(f"Bye {member.mention} !!!")
 
 #reply function,bot replies when message contains trigger words
