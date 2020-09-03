@@ -10,7 +10,6 @@ import datetime
 import keep_alive
 
 bot = discord.Client()
-#bot = commands.Bot(command_prefix = '-')
 
 #when bot is ready
 @bot.event
@@ -21,6 +20,12 @@ print("Friendly bot is online.")
 print('To do list for Friendly bot')
 print("Need to make the bot announce '@member has left' when a member leaves the server")
 print('Need to add the reaction role function like the one @Coldfrost has') 
+
+#error handling vvv
+@bot.event
+async def on_command_error(ctx, error):
+  embed = discord.Embed(description= f'Error: {error}', colour=discord.Colour.red())
+  await ctx.send(embed=embed)
 
 #Friendly bot functions(bot 2&3 functions)
 #function to indicate a member has joined the server created by Jonse
@@ -37,17 +42,17 @@ async def on_member_join(member):
 async def on_member_leave(member):
     #channel = bot.get_channel(750961593277218838)
     channel = discord.utils.get(member.guild.channels, name= "leaves and removes")
-    Jonse_leave_message = ("Unfortunately, f{member.mention} is longer present in this server!")
+    Jonse_leave_message = ("Unfortunately", f"{member.mention} is longer present in this server!")
     await channel.send(Jonse_leave_message)
 
 #member removed function 
 @bot.event
 async def on_member_remove(member):
   channel = bot.get_channel(750961593277218838)
-  #'leave and remove' channel id
-  #channel = discord.utils.get(member.guild.channels, name= "leaves and removes")
-  await channel.send(f"Bye {member.mention} !!!")
-
+  #^^^'leave and remove' channel id
+  #channel = discord.utils.get(bot.guilds[0].channels, name="leaves and removes")
+  await channel.send(f"Bye {member.name} !!!")
+  
 #reply function,bot replies when message contains trigger words
 @bot.event
 async def on_message(message):
@@ -91,8 +96,7 @@ async def on_message(message):
         embed.add_field(name="Bot's command prefix", value="-<command>")#command prefix command        
         embed.add_field(name="Developer", value="Jonse(AJ)", inline=False)#Developer info   
         embed.add_field(name="invite", value="https://tinyurl.com/yyaleu7t", inline=False)
-        await channel.send(embed=embed)                    
-
+        await channel.send(embed=embed)                   
 
 
 
