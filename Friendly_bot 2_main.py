@@ -35,6 +35,7 @@ async def on_member_join(member):
 #on_member_leave
 @bot.event
 async def on_member_leave(member):
+    #channel = bot.get_channel(750961593277218838)
     channel = discord.utils.get(member.guild.channels, name= "leaves and removes")
     Jonse_leave_message = ("Unfortunately, f{member.mention} is longer present in this server!")
     await channel.send(Jonse_leave_message)
