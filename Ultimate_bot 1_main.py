@@ -184,9 +184,9 @@ async def create_role(ctx,name,*,reason=None):
   await ctx.guild.create_role(name=name, colour=discord.Colour.orange())
 
 
-
-
 #Server mannagements commands
+
+
 #clear command
 @bot.command(pass_text=True)
 async def clear(ctx, amount=1):
@@ -227,6 +227,7 @@ async def nuke(ctx):
     await ctx.send(embed=embed) 
     
 #Game commands
+
 #coinflip command
 @bot.command()
 async def coinflip(ctx):
@@ -506,6 +507,7 @@ async def help(ctx):
      
 
 	await ctx.send(embed=embed)
+
 
 
 
